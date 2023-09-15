@@ -2,13 +2,13 @@
     <v-sheet class="pa-2 page-height board-bg">
         <v-row>
             <v-col xs="12" md="4" lg="4">
-                <Column name="To Do" />
+                <Column title="To Do" name="todo" />
             </v-col>
             <v-col xs="12" md="4" lg="4">
-                <Column name="Doing" />
+                <Column title="Doing" name="doing" />
             </v-col>
             <v-col xs="12" md="4" lg="4">
-                <Column name="Done" />
+                <Column title="Done" name="done" />
             </v-col>
         </v-row>
     </v-sheet>

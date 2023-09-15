@@ -7,6 +7,11 @@ export const useBoardStore = defineStore('board', {
     doing: [],
     done: []
   }),
+  getters: {
+    todos: (state) => state.todo,
+    doings: (state) => state.doing,
+    dones: (state) => state.done
+  },
   actions: {
     addCard(col, data) {
       this[col].push({
