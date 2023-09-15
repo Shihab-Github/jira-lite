@@ -1,10 +1,16 @@
-export default function useDragAndDrop(col) {
-  const dragStart = (task) => {
-    console.log('start: ', task)
+import { ref } from 'vue'
+import { useBoardStore } from "@/store/board";
+
+export default function useDragAndDrop() {
+  const boardStore = useBoardStore();
+
+  const dragStart = (event, task, col) => { 
+    boardStore.setDirection(col)
+    boardStore.draggedTask = task
   };
 
   const dragEnd = () => {
-    console.log('drag end', col)
+    
   };
 
   const dragOver = (e) => {
@@ -12,14 +18,15 @@ export default function useDragAndDrop(col) {
   };
 
   const dragEnter = (event, col) => {
-    console.log('drag enter: ', event)
-    console.log('col: ', col)
-  }
+    const { from } = boardStore.direction
+    boardStore.setDirection(from, col)
+    boardStore.moveCard()
+  };
 
   return {
     dragStart,
     dragEnd,
     dragOver,
-    dragEnter
-  }
+    dragEnter,
+  };
 }
