@@ -10,7 +10,8 @@ export default function useAddCard(name) {
     description: '',
     status: '',
     labels: [],
-    comments: []
+    comments: [],
+    estimatedDate: null
   })
 
   const toggleAddCard = () => {

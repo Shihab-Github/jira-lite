@@ -8,7 +8,8 @@ export default function useEditCard(card = null, col = '') {
 
     const fields = ref({
         title: false,
-        desc: false
+        desc: false,
+        date: false
     })
 
     const editCard = (item) => {
@@ -33,6 +34,11 @@ export default function useEditCard(card = null, col = '') {
         selectedCard.value.description = originalCard.description
         fields.value.desc = false
     }
+
+    const cancelDate = () => {
+        selectedCard.value.estimatedDate = originalCard.estimatedDate
+        fields.value.date = false
+    }
  
     return {
         fields, 
@@ -42,6 +48,7 @@ export default function useEditCard(card = null, col = '') {
         editCard,
 
         cancelTtitle,
-        cancelDesc
+        cancelDesc,
+        cancelDate
     }
 }
