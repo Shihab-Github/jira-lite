@@ -23,8 +23,10 @@
 
         <div class="d-flex align-center mt-4" style="gap: 8px;">
             <v-icon>mdi-calendar-blank-outline</v-icon>
-            <div v-if="!fields.date" @click="fields.date = true" class="text-body-2">{{ selectedCard.estimatedDate ? formateDate(selectedCard.estimatedDate) : 'Add estimation date'  }}</div>
-            <VueDatePicker v-if="fields.date" dark v-model="selectedCard.estimatedDate" placeholder="Enter estimation date" text-input />
+            <div v-if="!fields.date" @click="fields.date = true" class="text-body-2">{{ selectedCard.estimatedDate ?
+                formateDate(selectedCard.estimatedDate) : 'Add estimation date' }}</div>
+            <VueDatePicker v-if="fields.date" dark v-model="selectedCard.estimatedDate" placeholder="Enter estimation date"
+                text-input />
             <v-btn v-if="fields.date" density="compact" icon="mdi-check" @click="update('date')"></v-btn>
             <v-btn v-if="fields.date" density="compact" icon="mdi-cancel" @click="cancelDate"></v-btn>
         </div>
@@ -111,11 +113,12 @@ const { fixedLabels, saveLabels, showLabel } = useLabels(selectedCard, props.col
 const { comment, addComment, cancelComment } = useComment(selectedCard, props.col)
 
 const formateDate = (date) => {
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const year = date.getFullYear();
+    const dateTime = new Date(date)
+    const day = String(dateTime.getDate()).padStart(2, '0');
+    const month = String(dateTime.getMonth() + 1).padStart(2, '0');
+    const year = dateTime.getFullYear();
 
-  return `${month}-${day}-${year}`;
+    return `${month}-${day}-${year}`;
 }
 
 </script>

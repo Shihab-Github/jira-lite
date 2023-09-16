@@ -31,7 +31,7 @@
         </div>
     </v-sheet>
 
-    <Dialog :open="showEditDialog" :toggleDialog="toggleDialog">
+    <Dialog :open="showEditDialog" :showFooter="true" :toggleDialog="toggleDialog">
         <Card :card="selectedCard" :col="name" />
     </Dialog>
 </template>
