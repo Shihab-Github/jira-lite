@@ -32,7 +32,7 @@
     </v-sheet>
 
     <Dialog :open="showEditDialog" :toggleDialog="toggleDialog">
-        <Card :card="selectedCard" />
+        <Card :card="selectedCard" :col="name" />
     </Dialog>
 </template>
 

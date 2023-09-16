@@ -10,7 +10,8 @@ export const useBoardStore = defineStore('board', {
       from: '',
       to: ''
     },
-    draggedTask: null
+    draggedTask: null,
+    fixedLabels: ['#7F5F01', '#974F0C', '#AE2A19', '#5E4DB2', '#0055CC']
   }),
   getters: {
     todos: (state) => state.todo,
@@ -22,6 +23,13 @@ export const useBoardStore = defineStore('board', {
       this[col].push({
         ...data
       })
+    },
+    updateCard(col, data) {
+      const { id } = data
+      const idx = this[col].findIndex(x => x.id === id)
+      this[col][idx] = {
+        ...data
+      }
     },
     moveCard() {
       const { from, to } = this.direction

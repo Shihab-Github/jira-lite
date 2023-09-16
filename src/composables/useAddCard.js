@@ -8,7 +8,8 @@ export default function useAddCard(name) {
     id: '',
     title: '',
     description: '',
-    status: ''
+    status: '',
+    labels: []
   })
 
   const toggleAddCard = () => {
