@@ -2,10 +2,10 @@
     <v-sheet class="pa-2 page-height board-bg">
         <v-row>
             <v-col xs="12" md="4" lg="4">
-                <Column title="To Do" name="todo" />
+                <Column title="Pending" name="todo" />
             </v-col>
             <v-col xs="12" md="4" lg="4">
-                <Column title="Doing" name="doing" />
+                <Column title="Processing" name="doing" />
             </v-col>
             <v-col xs="12" md="4" lg="4">
                 <Column title="Done" name="done" />
