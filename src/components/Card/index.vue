@@ -10,8 +10,10 @@
         </div>
 
         <div class="d-flex align-center mt-4" style="gap: 8px;">
-            <v-icon :style="{alignSelf: selectedCard.description ? 'flex-start' : 'center'}">mdi-reorder-horizontal</v-icon>
-            <div v-if="!fields.desc" @click="fields.desc = true" class="text-grey-2">{{ selectedCard.description ?
+            <v-icon
+                :style="{ alignSelf: selectedCard.description ? 'flex-start' : 'center' }">mdi-reorder-horizontal</v-icon>
+            <div v-if="!fields.desc" @click="fields.desc = true" class="text-grey-2 text-body-2">{{ selectedCard.description
+                ?
                 selectedCard.description : 'Add a more detailed description' }}</div>
             <v-textarea v-if="fields.desc" autofocus v-model="selectedCard.description" rows="1" variant="underlined"
                 placeholder="Add a detailed description"></v-textarea>
@@ -25,8 +27,8 @@
         </div>
         <div v-if="selectedCard.labels.length > 0" class="d-flex align-center mt-2" style="gap: 8px;">
             <v-icon></v-icon>
-            <v-chip v-for="item in selectedCard.labels" :style="{background: item.color}" text-color="white">
-                {{item.value}}
+            <v-chip v-for="item in selectedCard.labels" :style="{ background: item.color }" text-color="white">
+                {{ item.value }}
             </v-chip>
         </div>
         <div class="d-flex align-center" style="gap: 8px;" v-if="showLabel">
@@ -45,11 +47,38 @@
                     <v-btn variant="tonal" size="small" @click="saveLabels">
                         Save
                     </v-btn>
-                    <v-btn variant="text" size="small">
+                    <v-btn variant="text" size="small" @click="showLabel = false">
                         Cancel
                     </v-btn>
                 </div>
             </v-card>
+        </div>
+
+        <div class="d-flex align-center mt-4" style="gap: 8px;">
+            <v-icon>mdi-comment-outline</v-icon>
+            <div class="text-body-1">Activity</div>
+        </div>
+        <div class="mt-4 d-flex align-center flex-item-gap">
+            <v-avatar color="teal-darken-4" class="align-self-start" size="small">
+                <span class="text-h5">R</span>
+            </v-avatar>
+            <div class="w-100">
+                <v-text-field placeholder="Write a comment..." @keyup.enter="addComment" v-model="comment" density="compact"
+                    variant="solo-filled"></v-text-field>
+                <v-btn size="small" class="mr-1" @click="addComment">Save</v-btn><v-btn @click="cancelComment"
+                    variant="text" size="small">Cancel</v-btn>
+            </div>
+        </div>
+        <div class="mt-4" v-if="card.comments.length > 0">
+            <div class="d-flex flex-item-gap mt-3" v-for="(item, index) in card.comments" :key="index">
+                <v-avatar color="teal-darken-4" class="align-self-start" size="small">
+                    <span class="text-h5">R</span>
+                </v-avatar>
+                <div class="d-block pa-2 w-100 bg-grey-darken-4 rounded">
+                    {{ item }}
+                </div>
+            </div>
+
         </div>
 
 
@@ -59,6 +88,7 @@
 <script setup>
 import useEditCard from '@/composables/useEditCard';
 import useLabels from '@/composables/useLabels';
+import useComment from '@/composables/useComment'
 
 const props = defineProps(['card', 'col'])
 
@@ -70,6 +100,8 @@ const {
     cancelDesc
 } = useEditCard(props.card, props.col)
 
-const { fixedLabels, saveLabels, showLabel } = useLabels(selectedCard)
+const { fixedLabels, saveLabels, showLabel } = useLabels(selectedCard, props.col)
+
+const { comment, addComment, cancelComment } = useComment(selectedCard, props.col)
 
 </script>

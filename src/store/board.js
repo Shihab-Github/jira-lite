@@ -13,6 +13,7 @@ export const useBoardStore = defineStore('board', {
     draggedTask: null,
     fixedLabels: ['#7F5F01', '#974F0C', '#AE2A19', '#5E4DB2', '#0055CC']
   }),
+  persist: true,
   getters: {
     todos: (state) => state.todo,
     doings: (state) => state.doing,

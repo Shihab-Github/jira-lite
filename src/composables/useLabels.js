@@ -1,6 +1,8 @@
+import { useBoardStore } from '@/store/board'
 import { ref } from 'vue'
 
-export default function useLabels(card) {
+export default function useLabels(card, col) {
+    const boardStore = useBoardStore()
     const selectedLabels = ref([])
     const showLabel = ref(false)
 
@@ -35,6 +37,10 @@ export default function useLabels(card) {
     const saveLabels = () => {
         selectedLabels.value = fixedLabels.value.filter(x => x.checked)
         card.value.labels = fixedLabels.value.filter(x => x.checked)
+        let data = {
+            ...card.value,
+        }
+        boardStore.updateCard(col, data)
         showLabel.value = false
     }
 

@@ -16,7 +16,6 @@ export default function useEditCard(card = null, col = '') {
     }
 
     const update = (field) => {
-        debugger
         let data ={
             ...selectedCard.value,
         }
