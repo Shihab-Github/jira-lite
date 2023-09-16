@@ -11,9 +11,6 @@ export default function useEditCard(card = null, col = '') {
         desc: false
     })
 
-    const isEditingTitle = ref(false)
-    const isEditingDesc = ref(false)
-
     const editCard = (item) => {
         selectedCard.value = item
     }
@@ -40,7 +37,6 @@ export default function useEditCard(card = null, col = '') {
  
     return {
         fields, 
-
         update,
 
         selectedCard,
