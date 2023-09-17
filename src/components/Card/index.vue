@@ -64,10 +64,37 @@
             </v-card>
         </div>
 
+        <div class="d-flex align-center mt-4 w-100" style="gap: 8px;">
+            <v-icon>mdi-attachment</v-icon>
+            <div class="text-body-1 flex-grow-1">Attachments</div>
+            <div>
+                <input type="file" @change="previewFile" id="actual-btn" hidden />
+                <label class="clabel" for="actual-btn">Upload File</label>
+            </div>
+        </div>
+
+        <div class="d-flex mt-2">
+            <v-icon></v-icon>
+            <div class="w-100 d-flex">
+                <v-sheet v-for="item in selectedCard.attachments" :key="item.id" elevation="6"
+                    class="d-flex flex-wrap rounded align-center flex-item-gap ma-1 pa-1">
+                    <v-img min-width="100" max-width="100" min-height="100" max-height="100" aspect-ratio="16/9" cover
+                        :src="item.previewUrl">
+                    </v-img>
+                    <div>
+                        <div class="font-weight-bold text-caption">{{ item.name }}</div>
+                        <v-btn size="x-small" variant="tonal" @click="deleteFile(item.id)">Delete</v-btn>
+                    </div>
+                </v-sheet>
+            </div>
+        </div>
+
+
         <div class="d-flex align-center mt-4" style="gap: 8px;">
             <v-icon>mdi-comment-outline</v-icon>
             <div class="text-body-1">Activity</div>
         </div>
+
         <div class="mt-4 d-flex align-center flex-item-gap">
             <v-avatar color="teal-darken-4" class="align-self-start" size="small">
                 <span class="text-h5">R</span>
@@ -96,6 +123,7 @@
 import useEditCard from '@/composables/useEditCard';
 import useLabels from '@/composables/useLabels';
 import useComment from '@/composables/useComment'
+import useAttachment from '@/composables/useAttachment';
 
 const props = defineProps(['card', 'col'])
 
@@ -112,6 +140,9 @@ const { fixedLabels, saveLabels, showLabel } = useLabels(selectedCard, props.col
 
 const { comment, addComment, cancelComment } = useComment(selectedCard, props.col)
 
+const { previewFile, deleteFile } = useAttachment(selectedCard)
+
+
 const formateDate = (date) => {
     const dateTime = new Date(date)
     const day = String(dateTime.getDate()).padStart(2, '0');
@@ -122,3 +153,15 @@ const formateDate = (date) => {
 }
 
 </script>
+
+<style>
+.clabel {
+    background-color: #A1BDD914;
+    color: #fff;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+</style>
