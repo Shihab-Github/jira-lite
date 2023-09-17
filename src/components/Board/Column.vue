@@ -12,13 +12,11 @@
             <v-sheet draggable="true" @dragstart="dragStart($event, item, name)" @dragend="dragEnd" v-for="item in tasks"
                 :key="item.id" elevation="1" class="pa-2 mb-2" color="info" rounded>
                 <div class="d-flex justify-space-between align-center">
-                    <div class="text-body-2">{{ item.title }}</div>
+                    <router-link :to="{name: 'TaskDetail', params: {id: item.id, col: name}}" class="text-body-2 font-weight-bold text-white">{{ item.title }}</router-link>
                     <v-btn variant="text" density="compact" icon="mdi-pencil" @click="onEditCard(item)"></v-btn>
                 </div>
-
             </v-sheet>
         </div>
-
 
         <v-text-field autofocus v-model="card.title" @keyup.enter="addCard" bg-color="blue-grey-darken-4" v-if="addingCard"
             class="mt-1" placeholder="Enter title for this card" variant="outlined"></v-text-field>

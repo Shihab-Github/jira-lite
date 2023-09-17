@@ -46,6 +46,10 @@ export const useBoardStore = defineStore('board', {
     setDirection(from = '', to = '') {
       this.direction.from = from
       this.direction.to = to
+    },
+    findCard(id, col) {
+      const task = this[col].find(x => x.id === id)
+      return task
     }
   }
 })

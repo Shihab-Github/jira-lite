@@ -75,9 +75,9 @@
 
         <div class="d-flex mt-2">
             <v-icon></v-icon>
-            <div class="w-100 d-flex">
+            <div class="w-100 d-flex flex-wrap">
                 <v-sheet v-for="item in selectedCard.attachments" :key="item.id" elevation="6"
-                    class="d-flex flex-wrap rounded align-center flex-item-gap ma-1 pa-1">
+                    class="d-flex rounded align-center flex-item-gap ma-1 pa-1">
                     <v-img min-width="100" max-width="100" min-height="100" max-height="100" aspect-ratio="16/9" cover
                         :src="item.previewUrl">
                     </v-img>
