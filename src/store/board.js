@@ -13,7 +13,6 @@ export const useBoardStore = defineStore("board", {
     fromDate: null,
     toDate: null,
     draggedTask: null,
-    fixedLabels: ["#7F5F01", "#974F0C", "#AE2A19", "#5E4DB2", "#0055CC"],
     unfilteredTodos: [],
     unfilteredDoings: [],
     unfilteredDones: []

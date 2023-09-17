@@ -10,7 +10,7 @@
 
         <div>
             <v-sheet draggable="true" @dragstart="dragStart($event, item, name)" @dragend="dragEnd" v-for="item in tasks"
-                :key="item.id" elevation="1" class="pa-2 mb-2" color="info" rounded>
+                :key="item.id" :style="{ border: item.highlighted ? '2px solid yellow' : 'none' }" elevation="1" class="pa-2 mb-2" color="info" rounded>
                 <div class="d-flex justify-space-between align-center">
                     <router-link :to="{name: 'TaskDetail', params: {id: item.id, col: name}}" class="text-body-2 font-weight-bold text-white">{{ item.title }}</router-link>
                     <v-btn variant="text" density="compact" icon="mdi-pencil" @click="onEditCard(item)"></v-btn>
@@ -56,12 +56,15 @@ const {showEditDialog, toggleDialog} = useDialog()
 const { selectedCard, editCard } = useEditCard()
 const tasks = computed(() => boardStore[`${name}s`]) 
 
-console.log('tasks: ', tasks)
-
-
 const onEditCard = (item) => {
     editCard(item)
     toggleDialog()
 }
 
 </script>
+
+<style>
+    .matched {
+        border: 2px solid yellow;
+    }
+</style>

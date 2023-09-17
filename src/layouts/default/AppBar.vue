@@ -8,6 +8,7 @@
     <v-btn size="small" @click="toggleDialog" class="mr-1" prepend-icon="mdi-plus" variant="tonal">
       Create Task
     </v-btn>
+    <v-text-field class="ml-1" type="text" @input="searchByKeyword" placeholder="Search by keyword (min 3 character)" variant="underlined" density="compact"></v-text-field>
     <v-menu location="bottom" transition="scale-transition">
       <template v-slot:activator="{ props }">
         <v-btn icon v-bind="props">
@@ -16,7 +17,6 @@
       </template>
 
       <v-sheet class="pa-3" width="290">
-        <v-text-field label="Keyword" placeholder="Search tasks by title, description, label..." variant="solo-filled" density="compact"></v-text-field>
         <div class="text-body-2 mb-2">Search tasks by date range </div>
         <VueDatePicker v-model="date" dark inline range auto-apply style="width: 100%;" />
         <div class="d-flex flex-row-reverse mt-3">
@@ -53,8 +53,7 @@ import CreateTask from '@/components/CreateTask'
 import useFilter from '@/composables/useFilter';
 
 const { showEditDialog, toggleDialog } = useDialog()
-const { date, clearDates, filterByDateRange } = useFilter()
+const { date, clearDates, filterByDateRange, searchByKeyword } = useFilter()
 
-console.log('date: ', date)
 
 </script>

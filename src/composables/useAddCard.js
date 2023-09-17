@@ -14,7 +14,8 @@ export default function useAddCard(name = "") {
     labels: [],
     comments: [],
     estimatedDate: null,
-    attachments: []
+    attachments: [],
+    highlighted: false
   });
 
   const toggleAddCard = () => {

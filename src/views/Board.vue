@@ -15,6 +15,25 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
 import Column from '../components/Board/Column'
+import { useBoardStore } from "@/store/board";
+
+
+
+onMounted(() => {
+    const boardStore = useBoardStore()
+    unhighlight(boardStore.todos)
+    unhighlight(boardStore.doings)
+    unhighlight(boardStore.dones)
+})
+
+const unhighlight = (list) => {
+    for (let i = 0; i < list.length; i++) {
+        const item = list[i];
+        item.highlighted = false;
+    }
+};
+
 </script>
 
