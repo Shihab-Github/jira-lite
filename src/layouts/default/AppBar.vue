@@ -11,6 +11,18 @@
     <v-menu location="bottom" transition="scale-transition">
       <template v-slot:activator="{ props }">
         <v-btn icon v-bind="props">
+          <v-icon>mdi-filter</v-icon>
+        </v-btn>
+      </template>
+
+      <v-sheet class="pa-3" width="400">
+        <v-text-field label="Label" variant="solo-filled" density="compact"></v-text-field>
+        <VueDatePicker v-model="date" placeholder="Select a date range" range input-class-name="custom-height v-field--variant-solo-filled v-field--variant-solo" />
+      </v-sheet>
+    </v-menu>
+    <v-menu location="bottom" transition="scale-transition">
+      <template v-slot:activator="{ props }">
+        <v-btn icon v-bind="props">
           <v-icon>mdi-account</v-icon>
         </v-btn>
       </template>

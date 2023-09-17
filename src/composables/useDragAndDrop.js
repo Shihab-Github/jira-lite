@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import { useBoardStore } from "@/store/board";
 
 export default function useDragAndDrop() {
