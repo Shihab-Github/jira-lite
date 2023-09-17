@@ -14,6 +14,7 @@ export default function useAddCard(name = "") {
     labels: [],
     comments: [],
     estimatedDate: null,
+    attachments: []
   });
 
   const toggleAddCard = () => {
@@ -58,6 +59,7 @@ export default function useAddCard(name = "") {
       labels: [],
       comments: [],
       estimatedDate: null,
+      attachments: []
     };
   };
 
