@@ -35,22 +35,29 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import Dialog from '@/components/Dialog'
 import Card from '@/components/Card'
 import useAddCard from '@/composables/useAddCard';
 import useDragAndDrop from '@/composables/useDragAndDrop'
 import useDialog from '@/composables/useDialog'
 import useEditCard from '@/composables/useEditCard'
+import { useBoardStore } from '@/store/board';
 
 const { name, title } = defineProps({
     name: String,
     title: String
 })
 
-const { tasks, card, addingCard, toggleAddCard, addCard } = useAddCard(name)
+const boardStore = useBoardStore()
+const { card, addingCard, toggleAddCard, addCard } = useAddCard(name)
 const { dragEnd, dragEnter, dragOver, dragStart } = useDragAndDrop()
 const {showEditDialog, toggleDialog} = useDialog()
 const { selectedCard, editCard } = useEditCard()
+const tasks = computed(() => boardStore[`${name}s`]) 
+
+console.log('tasks: ', tasks)
+
 
 const onEditCard = (item) => {
     editCard(item)

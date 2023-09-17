@@ -64,7 +64,6 @@ export default function useAddCard(name = "") {
   };
 
   return {
-    tasks: store[`${name}s`],
     card,
     addingCard,
     toggleAddCard,
