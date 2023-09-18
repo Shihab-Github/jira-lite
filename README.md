@@ -3,7 +3,7 @@
 ## Project Details
 
 ```
-# Project Title: Trello Clone
+# Project Title: Trello Clone using Vue, Pinia and Vuetify
 This app is an attempt to clone trello. The design has been inspired from trello
 
 # Features
