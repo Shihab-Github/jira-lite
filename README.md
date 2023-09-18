@@ -1,5 +1,20 @@
 # essentials
 
+## Project Details
+
+```
+# Project Title: Trello Clone
+This app is an attempt to clone trello. The design has been inspired from trello
+
+# Features
+1. Users can create task
+2. Users can edit tasks
+
+
+# pnpm
+pnpm install
+```
+
 ## Project setup
 
 ```
