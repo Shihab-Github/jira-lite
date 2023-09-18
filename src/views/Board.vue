@@ -1,5 +1,6 @@
 <template>
     <v-sheet class="pa-2 page-height board-bg">
+        <div class="text-black text-center mb-1">Total Completion: {{ percentage }}%</div>
         <v-row>
             <v-col xs="12" sm="12" md="4" lg="4">
                 <Column title="Pending" name="todo" />
@@ -15,17 +16,20 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import Column from '../components/Board/Column'
 import { useBoardStore } from "@/store/board";
 
-
+const boardStore = useBoardStore()
+const percentage = computed(() => boardStore.completionPercentage) 
 
 onMounted(() => {
-    const boardStore = useBoardStore()
+    boardStore.reset()
     unhighlight(boardStore.todos)
     unhighlight(boardStore.doings)
     unhighlight(boardStore.dones)
+    boardStore.fromDate = null
+    boardStore.toDate = null
 })
 
 const unhighlight = (list) => {

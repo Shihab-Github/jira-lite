@@ -51,7 +51,10 @@ export default function useAddCard(name = "") {
       id: crypto.randomUUID(),
       labels
     };
-    store.addCard(card.value.status, newTask);
+    if(!newTask.status) {
+      newTask.status = 'todo'
+    }
+    store.addCard(newTask.status, newTask);
     card.value = {
       id: "",
       title: "",

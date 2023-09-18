@@ -50,7 +50,7 @@
     </v-container>
     <v-divider></v-divider>
     <div class="d-flex pa-3 flex-row-reverse flex-item-gap w-100">
-        <v-btn variant="tonal" @click="toggle($event, createTask)">Save</v-btn>
+        <v-btn variant="tonal" @click="toggle($event, createTask)" :disabled="!card.title">Save</v-btn>
         <v-btn variant="text" @click="toggle($event)">Cancel</v-btn>
     </div>
 </template>

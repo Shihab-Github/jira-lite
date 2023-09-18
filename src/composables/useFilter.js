@@ -30,9 +30,15 @@ export default function useFilter() {
     if (searchStr.length < 3) return;
     for (let i = 0; i < list.length; i++) {
       const item = list[i];
-      const { title, description } = item;
-      if (title.includes(searchStr) || description.includes(searchStr)) {
+      const { title, labels } = item;
+      if (title.toLowerCase().includes(searchStr.toLowerCase())) {
         item.highlighted = true;
+      }
+      const includes = labels.some(label => 
+        label.value.toLowerCase().includes(searchStr.toLowerCase())
+      );
+      if(includes){
+        item.highlighted = true
       }
     }
   };

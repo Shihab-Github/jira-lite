@@ -22,6 +22,13 @@ export const useBoardStore = defineStore("board", {
     todos: (state) => state.todo,
     doings: (state) => state.doing,
     dones: (state) => state.done,
+    completionPercentage: (state) => {
+      const totalTasks = state.todo.length + state.doing.length + state.done.length
+      if(totalTasks === 0) return '0.00'
+      const totalCompleted = state.done.length
+      const completionPercentage = (totalCompleted / totalTasks) * 100;
+      return completionPercentage.toFixed(2);
+    }
   },
   actions: {
     addCard(col, data) {
