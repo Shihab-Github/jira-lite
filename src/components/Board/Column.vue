@@ -4,7 +4,7 @@
         <div class="d-flex justify-space-between align-center mb-1">
             <div class="text-subtitle-2">{{ title }}</div>
             <v-btn size="x-small" icon @click="">
-                <v-icon>mdi-dots-horizontal</v-icon>
+            <v-icon>mdi-dots-horizontal</v-icon>
             </v-btn>
         </div>
 

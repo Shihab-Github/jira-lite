@@ -11,8 +11,8 @@ export default function useFilter() {
     if (boardStore.fromDate) {
       startDate = new Date(boardStore.fromDate);
     }
-    if (boardStore.endDate) {
-      endDate = new Date(boardStore.fromDate);
+    if (boardStore.toDate) {
+      endDate = new Date(boardStore.toDate);
     }
     date.value = [startDate, endDate];
   });

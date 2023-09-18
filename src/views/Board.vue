@@ -24,12 +24,9 @@ const boardStore = useBoardStore()
 const percentage = computed(() => boardStore.completionPercentage) 
 
 onMounted(() => {
-    boardStore.reset()
     unhighlight(boardStore.todos)
     unhighlight(boardStore.doings)
     unhighlight(boardStore.dones)
-    boardStore.fromDate = null
-    boardStore.toDate = null
 })
 
 const unhighlight = (list) => {

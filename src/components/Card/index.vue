@@ -3,6 +3,7 @@
         <div class="d-flex align-center" style="gap: 8px;">
             <v-icon>mdi-card-text-outline</v-icon>
             <div v-if="!fields.title" @click="fields.title = true" class="text-h6">{{ selectedCard.title }}</div>
+            <v-icon size="x-small" v-if="!fields.title" @click="fields.title = true">mdi-pencil</v-icon>
             <v-text-field v-if="fields.title" autofocus v-model="selectedCard.title" variant="underlined" density="compact"
                 single-line></v-text-field>
             <v-btn v-if="fields.title" density="compact" icon="mdi-check" @click="update('title')"></v-btn>
@@ -15,6 +16,7 @@
             <div v-if="!fields.desc" @click="fields.desc = true" class="text-grey-2 text-body-2">{{ selectedCard.description
                 ?
                 selectedCard.description : 'Add a more detailed description' }}</div>
+            <v-icon size="x-small" v-if="!fields.desc" @click="fields.desc = true">mdi-pencil</v-icon>
             <v-textarea v-if="fields.desc" autofocus v-model="selectedCard.description" rows="1" variant="underlined"
                 placeholder="Add a detailed description"></v-textarea>
             <v-btn v-if="fields.desc" density="compact" icon="mdi-check" @click="update('desc')"></v-btn>
@@ -25,6 +27,7 @@
             <v-icon>mdi-calendar-blank-outline</v-icon>
             <div v-if="!fields.date" @click="fields.date = true" class="text-body-2">{{ selectedCard.estimatedDate ?
                 formateDate(selectedCard.estimatedDate) : 'Add estimation date' }}</div>
+            <v-icon size="x-small" v-if="!fields.date" @click="fields.date = true">mdi-pencil</v-icon>
             <VueDatePicker v-if="fields.date" dark v-model="selectedCard.estimatedDate" placeholder="Enter estimation date"
                 text-input />
             <v-btn v-if="fields.date" density="compact" icon="mdi-check" @click="update('date')"></v-btn>
